@@ -39,6 +39,10 @@ def arithmetic_arranger(problems, solver=False):
         print(bottomtier)
         print(lines)
         print(totals)
+    else:
+        print(toptier)
+        print(bottomtier)
+        print(lines)
 
 
 if __name__ == "__main__":
