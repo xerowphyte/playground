@@ -1,13 +1,13 @@
 from audioop import add
 
 
-def add_time(start, duration):
+def add_time(start, duration, day_of_week = False):
     days_of_the_week_index = {"monday": 0, "tuesday": 1, "wednesday": 2, "thursday": 3, "friday": 4, "saturday": 5, "sunday": 6}
     days_of_the_week_array = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
     
     
     duration_tuple = duration.partition(":")
-    print(duration_tuple)
+    #print(duration_tuple)
     duration_hours = int(duration_tuple[0])
     duration_minutes = int(duration_tuple[2])
 
@@ -33,7 +33,22 @@ def add_time(start, duration):
     if(am_or_pm == "PM" and start_hours + duration_hours % 12) >= 12 :
         amount_of_days += 1
     am_or_pm = am_and_pm_flip[am_or_pm] if amount_of_am_pm_flips % 2 == 1 else am_or_pm
-    retunTime = str(end_hours) + ":" + str(end_minutes) + " " + am_or_pm
+    returnTime = str(end_hours) + ":" + str(end_minutes) + " " + am_or_pm
+
+    if (day_of_week) : 
+        day_of_week = day_of_week.lower()
+        index= int((days_of_the_week_index[day_of_week]) + amount_of_days) % 7
+        new_day = days_of_the_week_array[index]
+        returnTime += ", " + new_day
+
+    if(amount_of_days == 1) :
+        return returnTime + " " + "(next day)"
+    elif(amount_of_days > 1) :
+        return returnTime + " (" + str(amount_of_days) + " days later)"
+
+    return returnTime
+
+
 
 
 
@@ -43,4 +58,4 @@ def add_time(start, duration):
     
 
 if __name__ == "__main__":
-    print(add_time("11:06 PM", "2:02"))
+    print(add_time("11:06 PM", "122:02", "monday"))
