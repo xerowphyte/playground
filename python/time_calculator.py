@@ -17,6 +17,7 @@ def add_time(start, duration):
     start_minutes = int(start_minutes_tuple[0])
     am_or_pm = start_minutes_tuple[2]
     am_and_pm_flip = {"AM" : "PM", "PM" : "AM"}
+    amount_of_days = int(duration_hours / 24)
 
     end_minutes = start_minutes + duration_minutes
     if end_minutes >= 60:
@@ -29,7 +30,7 @@ def add_time(start, duration):
     end_hours = int((start_hours + duration_hours) % 12)
     end_minutes = end_minutes if end_minutes > 9 else "0" + str(end_minutes)
     end_hours = end_hours = 12 if end_hours == 0 else end_hours
-    #if(am_or_pm == "PM" and start_hours + duration_hours % 12) >= 12 :
+    if(am_or_pm == "PM" and start_hours + duration_hours % 12) >= 12 :
         amount_of_days += 1
     am_or_pm = am_and_pm_flip[am_or_pm] if amount_of_am_pm_flips % 2 == 1 else am_or_pm
     retunTime = str(end_hours) + ":" + str(end_minutes) + " " + am_or_pm
