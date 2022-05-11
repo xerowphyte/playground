@@ -1,5 +1,4 @@
-#from audioop import add
-#xerowphyte
+
 
 def add_time(start, duration, day_of_week = False):
     days_of_the_week_index = {"monday": 0, "tuesday": 1, "wednesday": 2, "thursday": 3, "friday": 4, "saturday": 5, "sunday": 6}
