@@ -29,8 +29,8 @@ def arithmetic_arranger(problems, solver=False):
         operatorDistance = max(len(fnumber), len(snumber)) + 2
 
         snumber = operator + snumber.rjust(operatorDistance - 1)
-        toptier = toptier + fnumber.rjust(operatorDistance) + (4 * " ")
         bottomtier = bottomtier + snumber + (4 * " ")
+        toptier = toptier + fnumber.rjust(operatorDistance) + (4 * " ")
         lines = lines + len(snumber) * "_" + (4 * " ")
         totals = totals + str(total).rjust(operatorDistance) + (4 * " ")
 
